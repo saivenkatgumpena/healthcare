@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../main";
 import { Navigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../api";
 import { toast } from "react-toastify";
 import { GoCheckCircleFill } from "react-icons/go";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -13,9 +13,8 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const { data } = await axios.get(
-          "http://localhost:5000/api/v1/appointment/getall",
-          { withCredentials: true }
+        const { data } = await api.get(
+          "/api/v1/appointment/getall"
         );
         setAppointments(data.appointments);
       } catch (error) {
@@ -27,10 +26,9 @@ const Dashboard = () => {
 
   const handleUpdateStatus = async (appointmentId, status) => {
     try {
-      const { data } = await axios.put(
-        `http://localhost:5000/api/v1/appointment/update/${appointmentId}`,
-        { status },
-        { withCredentials: true }
+      const { data } = await api.put(
+        `/api/v1/appointment/update/${appointmentId}`,
+        { status }
       );
       setAppointments((prevAppointments) =>
         prevAppointments.map((appointment) =>
