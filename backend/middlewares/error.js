@@ -6,6 +6,7 @@ class ErrorHandler extends Error {
 }
 
 export const errorMiddleware = (err, req, res, next) => {
+  console.error("Error caught by middleware:", err);
   let error = err;
 
   error.statusCode = error.statusCode || 500;
