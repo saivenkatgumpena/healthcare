@@ -7,7 +7,7 @@ dotenv.config({ path: "./my.env" });
 const seedDoctors = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
-      dbName: "MERN_STACK_HOSPITAL_MANAGEMENT_SYSTEM_DEPLOYED",
+      dbName: "hms_deployed",
     });
     console.log("Connected to database.");
 

@@ -14,7 +14,7 @@ export const dbConnection = async () => {
 
   try {
     await mongoose.connect(mongoUri, {
-      dbName: "MERN_STACK_HOSPITAL_MANAGEMENT_SYSTEM_DEPLOYED",
+      dbName: "hms_deployed",
       serverSelectionTimeoutMS: 15000,
     });
   } catch (e) {
